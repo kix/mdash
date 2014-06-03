@@ -65,7 +65,7 @@ class Text extends AbstractTret
         $text = '<' . self::BASE64_PARAGRAPH_TAG . '>' . trim($text) . '</' . self::BASE64_PARAGRAPH_TAG . '>';
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n|\r){2,}/e', '"</" . self::BASE64_PARAGRAPH_TAG . "><" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n){2,}/e', '"</" . self::BASE64_PARAGRAPH_TAG . "><" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
-        $text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '$m[1]."</" . self::BASE64_PARAGRAPH_TAG . ">".Util::iblock($m[2].$m[3])."<" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
+        $text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '$m[1]."</" . \EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">".Util::iblock($m[2].$m[3])."<" .\EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">"', $text);
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '"</" . self::BASE64_PARAGRAPH_TAG . ">"."<" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
         //может от открвающего до закрывающего ?!
         $text = preg_replace('/\<' . self::BASE64_PARAGRAPH_TAG . '\>(' . Util::INTERNAL_BLOCK_OPEN . '[a-zA-Z0-9\/=]+?' . Util::INTERNAL_BLOCK_CLOSE . ')?\<\/' . self::BASE64_PARAGRAPH_TAG . '\>/s', "", $text);
@@ -102,13 +102,13 @@ class Text extends AbstractTret
      */
     protected function build_brs()
     {
-        $this->_text = $this->preg_replace_e('/(\<\/' . self::BASE64_PARAGRAPH_TAG . '\>)([\r\n \t]+)(\<' . self::BASE64_PARAGRAPH_TAG . '\>)/mse', '$m[1].Util::iblock($m[2]).$m[3]', $this->_text);
+        $this->_text = $this->preg_replace_e('/(\<\/' . self::BASE64_PARAGRAPH_TAG . '\>)([\r\n \t]+)(\<' . self::BASE64_PARAGRAPH_TAG . '\>)/mse', '$m[1].\EMT\Util::iblock($m[2]).$m[3]', $this->_text);
 
         if (!preg_match('/\<' . self::BASE64_BREAKLINE_TAG . '\>/', $this->_text)) {
             $this->_text = str_replace("\r\n", "\n", $this->_text);
             $this->_text = str_replace("\r", "\n", $this->_text);
             //$this->_text = $this->preg_replace_e('/(\n|\r)/e', '"<" . self::BASE64_BREAKLINE_TAG . ">"', $this->_text);
-            $this->_text = $this->preg_replace_e('/(\n)/e', '"<" . self::BASE64_BREAKLINE_TAG . ">\n"', $this->_text);
+            $this->_text = $this->preg_replace_e('/(\n)/e', '"<" . \EMT\Tret\AbstractTret::BASE64_BREAKLINE_TAG . ">\n"', $this->_text);
         }
     }
 }
