@@ -1,10 +1,8 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
 
-class EMT_Tret_Dash extends EMT_Tret
+namespace EMT\Tret;
+
+class Dash extends AbstractTret
 {
     public $title = "Дефисы и тире";
     public $rules = array(

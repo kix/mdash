@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Nobr extends EMT_Tret
+class Nobr extends AbstractTret
 {
     public $title = "Неразрывные конструкции";
 
@@ -112,24 +109,3 @@ class EMT_Tret_Nobr extends EMT_Tret
         return $triads;
     }
 }
-/**PYTHON
- * # * Объединение IP-адрессов в неразрывные конструкции (IPv4 only)
- * # *
- * # * @param unknown_type $triads
- * # * @return unknown
- * def nowrap_ip_address(self, triads):
- * triad = triads.split('.')
- * addTag = True
- *
- * for value in triad:
- * value = int(value)
- * if (value > 255):
- * addTag = false
- * break
- *
- * if (addTag == True):
- * triads = self.tag(triads, 'span', {'class': "nowrap"})
- *
- * return triads
- *
- * PYTHON**/

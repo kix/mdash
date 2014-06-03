@@ -8,17 +8,18 @@
 
 namespace EMTTests\Integration;
 
+use EMT\EMTypograph;
+
 class IntegrationTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var \EMTypograph
      */
     private $typographer;
 
     public function setUp()
     {
-        $this->typographer = new \EMTypograph();
+        $this->typographer = new EMTypograph();
     }
 
     public function testRun()

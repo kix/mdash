@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_OptAlign extends EMT_Tret
+class OptAlign extends AbstractTret
 {
 
     public $classes = array(

@@ -1,18 +1,22 @@
 <?php
 
+namespace EMT\Tret;
+
+use EMT\Util;
+
 /**
  * Базовый класс для группы правил обработки текста
  * Класс группы должен наследовать, данный класс и задавать
  * в нём EMT_Tret::rules и EMT_Tret::$name
  *
  */
-class EMT_Tret
+abstract class AbstractTret
 {
     /**
      * Набор правил в данной группе, который задан изначально
      * Его можно менять динамически добавляя туда правила с помощью put_rule
      *
-     * @var unknown_type
+     * @var array
      */
     public $rules;
     public $title;
@@ -74,8 +78,8 @@ class EMT_Tret
 
     /**
      * Установить режим разметки для данного Трэта если не было раньше установлено,
-     *   EMT_Lib::LAYOUT_STYLE - с помощью стилей
-     *   EMT_Lib::LAYOUT_CLASS - с помощью классов
+     *   Util::LAYOUT_STYLE - с помощью стилей
+     *   Util::LAYOUT_CLASS - с помощью классов
      *
      * @param int $kind
      */
@@ -87,13 +91,13 @@ class EMT_Tret
 
     /**
      * Установить режим разметки для данного Трэта,
-     *   EMT_Lib::LAYOUT_STYLE - с помощью стилей
-     *   EMT_Lib::LAYOUT_CLASS - с помощью классов
-     *   EMT_Lib::LAYOUT_STYLE|EMT_Lib::LAYOUT_CLASS - оба метода
+     *   Util::LAYOUT_STYLE - с помощью стилей
+     *   Util::LAYOUT_CLASS - с помощью классов
+     *   Util::LAYOUT_STYLE|Util::LAYOUT_CLASS - оба метода
      *
      * @param int $kind
      */
-    public function set_tag_layout($layout = EMT_Lib::LAYOUT_STYLE)
+    public function set_tag_layout($layout = Util::LAYOUT_STYLE)
     {
         $this->use_layout = $layout;
         $this->use_layout_set = true;
@@ -346,8 +350,8 @@ class EMT_Tret
             $attribute['class'] = $classname;
         }
 
-        return EMT_Lib::build_safe_tag($content, $tag, $attribute,
-            $this->use_layout === false ? EMT_Lib::LAYOUT_STYLE : $this->use_layout);
+        return Util::build_safe_tag($content, $tag, $attribute,
+            $this->use_layout === false ? Util::LAYOUT_STYLE : $this->use_layout);
     }
 
     /**

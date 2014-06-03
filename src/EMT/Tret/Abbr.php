@@ -1,10 +1,11 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Abbr extends EMT_Tret
+/**
+ * Class EMT_Tret_Abbr
+ * @package EMT\Tret
+ */
+class Abbr extends AbstractTret
 {
     public $title = "Сокращения";
 

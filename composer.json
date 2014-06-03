@@ -8,10 +8,13 @@
         }
     ],
     "autoload": {
-
+        "psr-0": {
+            "EMT": "src",
+            "EMT\\Tests": "tests"
+        }
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "4.0.x"
     },
     "minimum-stability": "dev"
 }

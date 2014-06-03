@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Space extends EMT_Tret
+class Space extends AbstractTret
 {
     public $title = "Расстановка и удаление пробелов";
 

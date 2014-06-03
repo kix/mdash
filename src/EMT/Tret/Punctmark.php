@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Punctmark extends EMT_Tret
+class Punctmark extends AbstractTret
 {
     public $title = "Пунктуация и знаки препинания";
 

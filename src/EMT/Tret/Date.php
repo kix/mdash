@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Date extends EMT_Tret
+class Date extends AbstractTret
 {
     public $title = "Даты и дни";
 

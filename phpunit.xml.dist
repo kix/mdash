@@ -6,7 +6,7 @@
         stopOnError="false"
         stopOnFailure="false"
         stopOnIncomplete="false"
-        bootstrap="vendor/autoload.php">
+        bootstrap="tests/bootstrap.php">
 
     <testsuites>
         <testsuite name="Integration">

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'EMT.php';
+require_once 'EMTypograph.php';
 
 header('Content-Type: text/html; charset=utf-8');
 

@@ -1,6 +1,8 @@
 <?php
 
-class EMT_Lib
+namespace EMT;
+
+class Util
 {
     const LAYOUT_STYLE = 1;
     const LAYOUT_CLASS = 2;
@@ -100,11 +102,11 @@ class EMT_Lib
      *
      * <code>
      *  // Remove UTF-8 chars:
-     *    $str = EMT_Lib::clear_special_chars('your text', 'utf8');
+     *    $str = \EMT\Util::clear_special_chars('your text', 'utf8');
      *  // ... or HTML codes only:
-     *    $str = EMT_Lib::clear_special_chars('your text', 'html');
+     *    $str = \EMT\Util::clear_special_chars('your text', 'html');
      *    // ... or combo:
-     *  $str = EMT_Lib::clear_special_chars('your text');
+     *  $str = \EMT\Util::clear_special_chars('your text');
      * </code>
      *
      * @param  string $text
@@ -187,9 +189,9 @@ class EMT_Lib
     public static function safe_tag_chars($text, $way)
     {
         if ($way)
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 1) === "a" ? "%%___"  : ""  ) . EMT_Lib::encrypt_tag(trim($m[2]))  . $m[3];'), $text);
+            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 1) === "a" ? "%%___"  : ""  ) . \EMT\Util::encrypt_tag(trim($m[2]))  . $m[3];'), $text);
         else
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 3) === "%%___" ? EMT_Lib::decrypt_tag(substr(trim($m[2]), 4)) : EMT_Lib::decrypt_tag(trim($m[2])) ) . $m[3];'), $text);
+            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 3) === "%%___" ? \EMT\Util::decrypt_tag(substr(trim($m[2]), 4)) : \EMT\Util::decrypt_tag(trim($m[2])) ) . $m[3];'), $text);
 
         return $text;
     }
@@ -202,7 +204,7 @@ class EMT_Lib
      */
     public static function decode_internal_blocks($text)
     {
-        $text = preg_replace_callback('/' . EMT_Lib::INTERNAL_BLOCK_OPEN . '([a-zA-Z0-9\/=]+?)' . EMT_Lib::INTERNAL_BLOCK_CLOSE . '/s', create_function('$m', 'return EMT_Lib::decrypt_tag($m[1]);'), $text);
+        $text = preg_replace_callback('/' . \EMT\Util::INTERNAL_BLOCK_OPEN . '([a-zA-Z0-9\/=]+?)' . \EMT\Util::INTERNAL_BLOCK_CLOSE . '/s', create_function('$m', 'return \EMT\Util::decrypt_tag($m[1]);'), $text);
 
         return $text;
     }
@@ -215,7 +217,7 @@ class EMT_Lib
      */
     public static function iblock($text)
     {
-        return EMT_Lib::INTERNAL_BLOCK_OPEN . EMT_Lib::encrypt_tag($text) . EMT_Lib::INTERNAL_BLOCK_CLOSE;
+        return \EMT\Util::INTERNAL_BLOCK_OPEN . \EMT\Util::encrypt_tag($text) . \EMT\Util::INTERNAL_BLOCK_CLOSE;
     }
 
     /**
@@ -226,7 +228,7 @@ class EMT_Lib
      * @param  array $attribute список атрибутов, где ключ - имя атрибута, а значение - само значение данного атрибута
      * @return string
      */
-    public static function build_safe_tag($content, $tag = 'span', $attribute = array(), $layout = EMT_Lib::LAYOUT_STYLE)
+    public static function build_safe_tag($content, $tag = 'span', $attribute = array(), $layout = \EMT\Util::LAYOUT_STYLE)
     {
         $htmlTag = $tag;
 
@@ -239,7 +241,7 @@ class EMT_Lib
         $classname = "";
         if (count($attribute)) {
 
-            if ($layout & EMT_lib::LAYOUT_STYLE) {
+            if ($layout & self::LAYOUT_STYLE) {
                 if (isset($attribute['__style']) && $attribute['__style']) {
                     if (isset($attribute['style']) && $attribute['style']) {
                         $st = trim($attribute['style']);
@@ -264,7 +266,7 @@ class EMT_Lib
 
         }
 
-        if (($layout & EMT_lib::LAYOUT_CLASS) && $classname) {
+        if (($layout & self::LAYOUT_CLASS) && $classname) {
             $htmlTag .= " class=\"$classname\"";
         }
 
@@ -632,13 +634,13 @@ class EMT_Lib
     public static function convert_html_entities_to_unicode(&$text)
     {
         $text = preg_replace_callback("/\&#([0-9]+)\;/",
-            create_function('$m', 'return EMT_Lib::_getUnicodeChar(intval($m[1]));')
+            create_function('$m', 'return \EMT\Util::_getUnicodeChar(intval($m[1]));')
             , $text);
         $text = preg_replace_callback("/\&#x([0-9A-F]+)\;/",
-            create_function('$m', 'return EMT_Lib::_getUnicodeChar(hexdec($m[1]));')
+            create_function('$m', 'return \EMT\Util::_getUnicodeChar(hexdec($m[1]));')
             , $text);
         $text = preg_replace_callback("/\&([a-zA-Z0-9]+)\;/",
-            create_function('$m', '$r = EMT_Lib::html_char_entity_to_unicode($m[1]); return $r ? $r : $m[0];')
+            create_function('$m', '$r = \EMT\Util::html_char_entity_to_unicode($m[1]); return $r ? $r : $m[0];')
             , $text);
     }
 

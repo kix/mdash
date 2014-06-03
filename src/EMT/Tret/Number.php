@@ -1,10 +1,7 @@
 <?php
-/**
- * @see EMT_Tret
- */
-require_once 'EMT.Tret.php';
+namespace EMT\Tret;
 
-class EMT_Tret_Number extends EMT_Tret
+class Number extends AbstractTret
 {
     public $title = "Числа, дроби, математические знаки";
 
