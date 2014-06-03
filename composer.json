@@ -19,8 +19,6 @@
     "minimum-stability": "dev",
     "keywords": [
         "typographer",
-        "типограф",
-        "mdash",
-        "типограф Муравьева"
+        "mdash"
     ]
 }
