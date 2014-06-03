@@ -16,5 +16,11 @@
     "require-dev": {
         "phpunit/phpunit": "4.0.x"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "keywords": [
+        "typographer",
+        "типограф",
+        "mdash",
+        "типограф Муравьева"
+    ]
 }
