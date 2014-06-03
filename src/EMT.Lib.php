@@ -13,46 +13,48 @@ class EMT_Lib
      * @var array
      */
     public static $_charsTable = array(
-        '"' 	=> array('html' => array('&laquo;', '&raquo;', '&ldquo;', '&lsquo;', '&bdquo;', '&ldquo;', '&quot;', '&#171;', '&#187;'),
-                         'utf8' => array(0x201E, 0x201C, 0x201F, 0x201D, 0x00AB, 0x00BB)),
-        ' ' 	=> array('html' => array('&nbsp;', '&thinsp;', '&#160;'),
-                         'utf8' => array(0x00A0, 0x2002, 0x2003, 0x2008, 0x2009)),
-        '-' 	=> array('html' => array(/*'&mdash;',*/ '&ndash;', '&minus;', '&#151;', '&#8212;', '&#8211;'),
-                         'utf8' => array(0x002D, /*0x2014,*/ 0x2010, 0x2012, 0x2013)),
-        '—' 	=> array('html' => array('&mdash;'),
-                         'utf8' => array(0x2014)),
-        '==' 	=> array('html' => array('&equiv;'),
-                         'utf8' => array(0x2261)),
-        '...' 	=> array('html' => array('&hellip;', '&#0133;'),
-                         'utf8' => array(0x2026)),
-        '!=' 	=> array('html' => array('&ne;', '&#8800;'),
-                         'utf8' => array(0x2260)),
-        '<=' 	=> array('html' => array('&le;', '&#8804;'),
-                         'utf8' => array(0x2264)),
-        '>=' 	=> array('html' => array('&ge;', '&#8805;'),
-                         'utf8' => array(0x2265)),
-        '1/2' 	=> array('html' => array('&frac12;', '&#189;'),
-                         'utf8' => array(0x00BD)),
-        '1/4' 	=> array('html' => array('&frac14;', '&#188;'),
-                         'utf8' => array(0x00BC)),
-        '3/4' 	=> array('html' => array('&frac34;', '&#190;'),
-                         'utf8' => array(0x00BE)),
-        '+-' 	=> array('html' => array('&plusmn;', '&#177;'),
-                         'utf8' => array(0x00B1)),
-        '&' 	=> array('html' => array('&amp;', '&#38;')),
-        '(tm)' 	=> array('html' => array('&trade;', '&#153;'),
-                         'utf8' => array(0x2122)),
+        '"' => array('html' => array('&laquo;', '&raquo;', '&ldquo;', '&lsquo;', '&bdquo;', '&ldquo;', '&quot;', '&#171;', '&#187;'),
+            'utf8' => array(0x201E, 0x201C, 0x201F, 0x201D, 0x00AB, 0x00BB)),
+        ' ' => array('html' => array('&nbsp;', '&thinsp;', '&#160;'),
+            'utf8' => array(0x00A0, 0x2002, 0x2003, 0x2008, 0x2009)),
+        '-' => array('html' => array( /*'&mdash;',*/
+            '&ndash;', '&minus;', '&#151;', '&#8212;', '&#8211;'),
+            'utf8' => array(0x002D, /*0x2014,*/
+                0x2010, 0x2012, 0x2013)),
+        '—' => array('html' => array('&mdash;'),
+            'utf8' => array(0x2014)),
+        '==' => array('html' => array('&equiv;'),
+            'utf8' => array(0x2261)),
+        '...' => array('html' => array('&hellip;', '&#0133;'),
+            'utf8' => array(0x2026)),
+        '!=' => array('html' => array('&ne;', '&#8800;'),
+            'utf8' => array(0x2260)),
+        '<=' => array('html' => array('&le;', '&#8804;'),
+            'utf8' => array(0x2264)),
+        '>=' => array('html' => array('&ge;', '&#8805;'),
+            'utf8' => array(0x2265)),
+        '1/2' => array('html' => array('&frac12;', '&#189;'),
+            'utf8' => array(0x00BD)),
+        '1/4' => array('html' => array('&frac14;', '&#188;'),
+            'utf8' => array(0x00BC)),
+        '3/4' => array('html' => array('&frac34;', '&#190;'),
+            'utf8' => array(0x00BE)),
+        '+-' => array('html' => array('&plusmn;', '&#177;'),
+            'utf8' => array(0x00B1)),
+        '&' => array('html' => array('&amp;', '&#38;')),
+        '(tm)' => array('html' => array('&trade;', '&#153;'),
+            'utf8' => array(0x2122)),
         //'(r)' 	=> array('html' => array('<sup>&reg;</sup>', '&reg;', '&#174;'),
-        '(r)' 	=> array('html' => array('&reg;', '&#174;'),
-                         'utf8' => array(0x00AE)),
-        '(c)' 	=> array('html' => array('&copy;', '&#169;'),
-                         'utf8' => array(0x00A9)),
-        '§' 	=> array('html' => array('&sect;', '&#167;'),
-                         'utf8' => array(0x00A7)),
-        '`' 	=> array('html' => array('&#769;')),
-        '\'' 	=> array('html' => array('&rsquo;', '’')),
-        'x' 	=> array('html' => array('&times;', '&#215;'),
-                         'utf8' => array('×') /* какой же у него может быть код? */),
+        '(r)' => array('html' => array('&reg;', '&#174;'),
+            'utf8' => array(0x00AE)),
+        '(c)' => array('html' => array('&copy;', '&#169;'),
+            'utf8' => array(0x00A9)),
+        '§' => array('html' => array('&sect;', '&#167;'),
+            'utf8' => array(0x00A7)),
+        '`' => array('html' => array('&#769;')),
+        '\'' => array('html' => array('&rsquo;', '’')),
+        'x' => array('html' => array('&times;', '&#215;'),
+            'utf8' => array('×') /* какой же у него может быть код? */),
 
     );
 
@@ -68,8 +70,8 @@ class EMT_Lib
     /**
      * Костыли для работы с символами UTF-8
      *
-     * @author	somebody?
-     * @param  int         $c код символа в кодировке UTF-8 (например, 0x00AB)
+     * @author    somebody?
+     * @param  int $c код символа в кодировке UTF-8 (например, 0x00AB)
      * @return bool|string
      */
     public static function _getUnicodeChar($c)
@@ -78,16 +80,16 @@ class EMT_Lib
             return chr($c);
         } elseif ($c <= 0x7FF) {
             return chr(0xC0 | $c >> 6)
-                 . chr(0x80 | $c & 0x3F);
+            . chr(0x80 | $c & 0x3F);
         } elseif ($c <= 0xFFFF) {
             return chr(0xE0 | $c >> 12)
-                 . chr(0x80 | $c >> 6 & 0x3F)
-                 . chr(0x80 | $c & 0x3F);
+            . chr(0x80 | $c >> 6 & 0x3F)
+            . chr(0x80 | $c & 0x3F);
         } elseif ($c <= 0x10FFFF) {
             return chr(0xF0 | $c >> 18)
-                 . chr(0x80 | $c >> 12 & 0x3F)
-                 . chr(0x80 | $c >> 6 & 0x3F)
-                 . chr(0x80 | $c & 0x3F);
+            . chr(0x80 | $c >> 12 & 0x3F)
+            . chr(0x80 | $c >> 6 & 0x3F)
+            . chr(0x80 | $c & 0x3F);
         } else {
             return false;
         }
@@ -98,25 +100,25 @@ class EMT_Lib
      *
      * <code>
      *  // Remove UTF-8 chars:
-     * 	$str = EMT_Lib::clear_special_chars('your text', 'utf8');
+     *    $str = EMT_Lib::clear_special_chars('your text', 'utf8');
      *  // ... or HTML codes only:
-     * 	$str = EMT_Lib::clear_special_chars('your text', 'html');
-     * 	// ... or combo:
+     *    $str = EMT_Lib::clear_special_chars('your text', 'html');
+     *    // ... or combo:
      *  $str = EMT_Lib::clear_special_chars('your text');
      * </code>
      *
-     * @param  string      $text
-     * @param  mixed       $mode
+     * @param  string $text
+     * @param  mixed $mode
      * @return string|bool
      */
     public static function clear_special_chars($text, $mode = null)
     {
-        if(is_string($mode)) $mode = array($mode);
-        if(is_null($mode)) $mode = array('utf8', 'html');
-        if(!is_array($mode)) return false;
+        if (is_string($mode)) $mode = array($mode);
+        if (is_null($mode)) $mode = array('utf8', 'html');
+        if (!is_array($mode)) return false;
         $moder = array();
-        foreach($mode as $mod) if(in_array($mod, array('utf8','html'))) $moder[] = $mod;
-        if(count($moder)==0) return false;
+        foreach ($mode as $mod) if (in_array($mod, array('utf8', 'html'))) $moder[] = $mod;
+        if (count($moder) == 0) return false;
 
         foreach (self::$_charsTable as $char => $vals) {
             foreach ($mode as $type) {
@@ -126,7 +128,7 @@ class EMT_Lib
                             $v = self::_getUnicodeChar($v);
                         }
                         if ('html' === $type) {
-                            if (preg_match("/<[a-z]+>/i",$v)) {
+                            if (preg_match("/<[a-z]+>/i", $v)) {
                                 $v = self::safe_tag_chars($v, true);
                             }
                         }
@@ -145,7 +147,7 @@ class EMT_Lib
      * в двойной перенос
      *
      * @param  string $text
-     * @param  array  $allowableTag массив из тегов, которые будут проигнорированы
+     * @param  array $allowableTag массив из тегов, которые будут проигнорированы
      * @return string
      */
     public static function remove_html_tags($text, $allowableTag = null)
@@ -166,7 +168,7 @@ class EMT_Lib
                 $ignore = implode('', $tags);
             }
         }
-        $text = preg_replace(array('/\<br\s*\/?>/i', '/\<\/p\>\s*\<p\>/'), array("\n","\n\n"), $text);
+        $text = preg_replace(array('/\<br\s*\/?>/i', '/\<\/p\>\s*\<p\>/'), array("\n", "\n\n"), $text);
         $text = strip_tags($text, $ignore);
 
         return $text;
@@ -179,15 +181,15 @@ class EMT_Lib
      * возможности выносить за него кавычки.
      *
      * @param  string $text
-     * @param  bool   $safe
+     * @param  bool $safe
      * @return string
      */
     public static function safe_tag_chars($text, $way)
     {
         if ($way)
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m','return $m[1].( substr(trim($m[2]), 0, 1) === "a" ? "%%___"  : ""  ) . EMT_Lib::encrypt_tag(trim($m[2]))  . $m[3];'), $text);
+            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 1) === "a" ? "%%___"  : ""  ) . EMT_Lib::encrypt_tag(trim($m[2]))  . $m[3];'), $text);
         else
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m','return $m[1].( substr(trim($m[2]), 0, 3) === "%%___" ? EMT_Lib::decrypt_tag(substr(trim($m[2]), 4)) : EMT_Lib::decrypt_tag(trim($m[2])) ) . $m[3];'), $text);
+            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 3) === "%%___" ? EMT_Lib::decrypt_tag(substr(trim($m[2]), 4)) : EMT_Lib::decrypt_tag(trim($m[2])) ) . $m[3];'), $text);
 
         return $text;
     }
@@ -200,7 +202,7 @@ class EMT_Lib
      */
     public static function decode_internal_blocks($text)
     {
-        $text = preg_replace_callback('/'.EMT_Lib::INTERNAL_BLOCK_OPEN.'([a-zA-Z0-9\/=]+?)'.EMT_Lib::INTERNAL_BLOCK_CLOSE.'/s', create_function('$m','return EMT_Lib::decrypt_tag($m[1]);'), $text);
+        $text = preg_replace_callback('/' . EMT_Lib::INTERNAL_BLOCK_OPEN . '([a-zA-Z0-9\/=]+?)' . EMT_Lib::INTERNAL_BLOCK_CLOSE . '/s', create_function('$m', 'return EMT_Lib::decrypt_tag($m[1]);'), $text);
 
         return $text;
     }
@@ -213,24 +215,24 @@ class EMT_Lib
      */
     public static function iblock($text)
     {
-        return EMT_Lib::INTERNAL_BLOCK_OPEN. EMT_Lib::encrypt_tag($text).EMT_Lib::INTERNAL_BLOCK_CLOSE;
+        return EMT_Lib::INTERNAL_BLOCK_OPEN . EMT_Lib::encrypt_tag($text) . EMT_Lib::INTERNAL_BLOCK_CLOSE;
     }
 
     /**
      * Создание тега с защищенным содержимым
      *
-     * @param  string $content   текст, который будет обрамлен тегом
-     * @param  string $tag       тэг
-     * @param  array  $attribute список атрибутов, где ключ - имя атрибута, а значение - само значение данного атрибута
+     * @param  string $content текст, который будет обрамлен тегом
+     * @param  string $tag тэг
+     * @param  array $attribute список атрибутов, где ключ - имя атрибута, а значение - само значение данного атрибута
      * @return string
      */
-    public static function build_safe_tag($content, $tag = 'span', $attribute = array(), $layout = EMT_Lib::LAYOUT_STYLE )
+    public static function build_safe_tag($content, $tag = 'span', $attribute = array(), $layout = EMT_Lib::LAYOUT_STYLE)
     {
         $htmlTag = $tag;
 
         if (self::$_typographSpecificTagId) {
             if (!isset($attribute['id'])) {
-                $attribute['id'] = 'emt-2' . mt_rand(1000,9999);
+                $attribute['id'] = 'emt-2' . mt_rand(1000, 9999);
             }
         }
 
@@ -241,7 +243,7 @@ class EMT_Lib
                 if (isset($attribute['__style']) && $attribute['__style']) {
                     if (isset($attribute['style']) && $attribute['style']) {
                         $st = trim($attribute['style']);
-                        if(mb_substr($st, -1) != ";") $st .= ";";
+                        if (mb_substr($st, -1) != ";") $st .= ";";
                         $st .= $attribute['__style'];
                         $attribute['style'] = $st;
                     } else {
@@ -252,7 +254,7 @@ class EMT_Lib
 
             }
             foreach ($attribute as $attr => $value) {
-                if($attr == "__style") continue;
+                if ($attr == "__style") continue;
                 if ($attr == "class") {
                     $classname = "$value";
                     continue;
@@ -262,7 +264,7 @@ class EMT_Lib
 
         }
 
-        if ( ($layout & EMT_lib::LAYOUT_CLASS ) && $classname) {
+        if (($layout & EMT_lib::LAYOUT_CLASS) && $classname) {
             $htmlTag .= " class=\"$classname\"";
         }
 
@@ -278,7 +280,7 @@ class EMT_Lib
      */
     public static function encrypt_tag($text)
     {
-        return base64_encode($text)."=";
+        return base64_encode($text) . "=";
     }
 
     /**
@@ -289,7 +291,7 @@ class EMT_Lib
      */
     public static function decrypt_tag($text)
     {
-        return base64_decode(substr($text,0,-1));
+        return base64_decode(substr($text, 0, -1));
     }
 
     public static function strpos_ex(&$haystack, $needle, $offset = null)
@@ -298,8 +300,8 @@ class EMT_Lib
             $m = false;
             $w = false;
             foreach ($needle as $n) {
-                $p = strpos($haystack, $n , $offset);
-                if($p===false) continue;
+                $p = strpos($haystack, $n, $offset);
+                if ($p === false) continue;
                 if ($m === false) {
                     $m = $p;
                     $w = $n;
@@ -310,7 +312,7 @@ class EMT_Lib
                     $w = $n;
                 }
             }
-            if($m === false) return false;
+            if ($m === false) return false;
 
             return array('pos' => $m, 'str' => $w);
         }
@@ -320,14 +322,15 @@ class EMT_Lib
 
     public static function _process_selector_pattern(&$pattern)
     {
-        if($pattern===false) return;
-        $pattern = preg_quote($pattern , '/');
+        if ($pattern === false) return;
+        $pattern = preg_quote($pattern, '/');
         $pattern = str_replace("\\*", "[a-z0-9_\-]*", $pattern);
-        $pattern = "/".$pattern."/i";
+        $pattern = "/" . $pattern . "/i";
     }
+
     public static function _test_pattern($pattern, $text)
     {
-        if($pattern === false) return true;
+        if ($pattern === false) return true;
 
         return preg_match($pattern, $text);
     }
@@ -607,6 +610,7 @@ class EMT_Lib
         'rsaquo' => 8250,
         'euro' => 8364,
     );
+
     /**
      * Вернуть уникод символ по html entinty
      *
@@ -615,7 +619,7 @@ class EMT_Lib
      */
     public static function html_char_entity_to_unicode($entity)
     {
-        if(isset(self::$html4_char_ents[$entity])) return self::_getUnicodeChar(self::$html4_char_ents[$entity]);
+        if (isset(self::$html4_char_ents[$entity])) return self::_getUnicodeChar(self::$html4_char_ents[$entity]);
 
         return false;
     }
@@ -628,14 +632,14 @@ class EMT_Lib
     public static function convert_html_entities_to_unicode(&$text)
     {
         $text = preg_replace_callback("/\&#([0-9]+)\;/",
-                create_function('$m', 'return EMT_Lib::_getUnicodeChar(intval($m[1]));')
-                , $text);
+            create_function('$m', 'return EMT_Lib::_getUnicodeChar(intval($m[1]));')
+            , $text);
         $text = preg_replace_callback("/\&#x([0-9A-F]+)\;/",
-                create_function('$m', 'return EMT_Lib::_getUnicodeChar(hexdec($m[1]));')
-                , $text);
+            create_function('$m', 'return EMT_Lib::_getUnicodeChar(hexdec($m[1]));')
+            , $text);
         $text = preg_replace_callback("/\&([a-zA-Z0-9]+)\;/",
-                create_function('$m', '$r = EMT_Lib::html_char_entity_to_unicode($m[1]); return $r ? $r : $m[0];')
-                , $text);
+            create_function('$m', '$r = EMT_Lib::html_char_entity_to_unicode($m[1]); return $r ? $r : $m[0];')
+            , $text);
     }
 
     public static function rstrpos($haystack, $needle, $offset = 0)

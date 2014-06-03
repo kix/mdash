@@ -1,0 +1,17 @@
+{
+    "name": "kix/mdash",
+    "description": "E. Muravjov's typographer, Composer version",
+    "authors": [
+        {
+            "name": "Stepan Anchugov",
+            "email": "kixxx1@gmail.com"
+        }
+    ],
+    "autoload": {
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "minimum-stability": "dev"
+}
