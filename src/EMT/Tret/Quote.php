@@ -22,12 +22,12 @@ class Quote extends AbstractTret
         'open_quote' => array(
             'description' => 'Открывающая кавычка',
             'pattern' => '/(^|\(|\s|\>|-)(\"|\\\")(\S+)/iue',
-            'replacement' => '$m[1] . self::QUOTE_FIRS_OPEN . $m[3]'
+            'replacement' => '$m[1] . \EMT\Tret\AbstractTret::QUOTE_FIRS_OPEN . $m[3]'
         ),
         'close_quote' => array(
             'description' => 'Закрывающая кавычка',
             'pattern' => '/([a-zа-яё0-9]|\.|\&hellip\;|\!|\?|\>|\)|\:)((\"|\\\")+)(\.|\&hellip\;|\;|\:|\?|\!|\,|\s|\)|\<\/|$)/uie',
-            'replacement' => '$m[1] . str_repeat(self::QUOTE_FIRS_CLOSE, substr_count($m[2],"\"") ) . $m[4]'
+            'replacement' => '$m[1] . str_repeat(\EMT\Tret\AbstractTret::QUOTE_FIRS_CLOSE, substr_count($m[2],"\"") ) . $m[4]'
         ),
         'close_quote_adv' => array(
             'description' => 'Закрывающая кавычка особые случаи',
@@ -40,8 +40,8 @@ class Quote extends AbstractTret
                 ),
             'replacement' =>
                 array(
-                    '$m[1] . str_repeat(self::QUOTE_FIRS_CLOSE, substr_count($m[2],"\"")+substr_count($m[2],"&laquo;") ) . $m[4]. $m[5]',
-                    '$m[1] .$m[2]. str_repeat(self::QUOTE_FIRS_CLOSE, substr_count($m[3],"\"")+substr_count($m[3],"&laquo;") ) . $m[5]. $m[6]',
+                    '$m[1] . str_repeat(\EMT\Tret\AbstractTret::QUOTE_FIRS_CLOSE, substr_count($m[2],"\"")+substr_count($m[2],"&laquo;") ) . $m[4]. $m[5]',
+                    '$m[1] .$m[2]. str_repeat(\EMT\Tret\AbstractTret::QUOTE_FIRS_CLOSE, substr_count($m[3],"\"")+substr_count($m[3],"&laquo;") ) . $m[5]. $m[6]',
                     '>&raquo;.\2',
                     '>&raquo;,\2',
                 ),
@@ -49,7 +49,7 @@ class Quote extends AbstractTret
         'open_quote_adv' => array(
             'description' => 'Открывающая кавычка особые случаи',
             'pattern' => '/(^|\(|\s|\>)(\"|\\\")(\s)(\S+)/iue',
-            'replacement' => '$m[1] . self::QUOTE_FIRS_OPEN .$m[4]'
+            'replacement' => '$m[1] . \EMT\Tret\AbstractTret::QUOTE_FIRS_OPEN .$m[4]'
         ),
         'quotation' => array(
             'description' => 'Внутренние кавычки-лапки и дюймы',
