@@ -65,7 +65,7 @@ class Text extends AbstractTret
         $text = '<' . self::BASE64_PARAGRAPH_TAG . '>' . trim($text) . '</' . self::BASE64_PARAGRAPH_TAG . '>';
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n|\r){2,}/e', '"</" . self::BASE64_PARAGRAPH_TAG . "><" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n){2,}/e', '"</" . self::BASE64_PARAGRAPH_TAG . "><" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
-        $text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '$m[1]."</" . \EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">".Util::iblock($m[2].$m[3])."<" .\EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">"', $text);
+        $text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '$m[1]."</" . \EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">".\EMT\Util::iblock($m[2].$m[3])."<" .\EMT\Tret\AbstractTret::BASE64_PARAGRAPH_TAG . ">"', $text);
         //$text = $this->preg_replace_e('/([\040\t]+)?(\n)+([\040\t]*)(\n)+/e', '"</" . self::BASE64_PARAGRAPH_TAG . ">"."<" .self::BASE64_PARAGRAPH_TAG . ">"', $text);
         //может от открвающего до закрывающего ?!
         $text = preg_replace('/\<' . self::BASE64_PARAGRAPH_TAG . '\>(' . Util::INTERNAL_BLOCK_OPEN . '[a-zA-Z0-9\/=]+?' . Util::INTERNAL_BLOCK_CLOSE . ')?\<\/' . self::BASE64_PARAGRAPH_TAG . '\>/s', "", $text);
