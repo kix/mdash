@@ -127,9 +127,8 @@ abstract class AbstractTret
         return array($this, $name);
     }
 
-    private function _pre_parse()
+    public function pre_parse()
     {
-        $this->pre_parse();
         foreach ($this->rules as $rule) {
             if (!isset($rule['init'])) continue;
             $m = $this->getmethod($rule['init']);
@@ -138,7 +137,7 @@ abstract class AbstractTret
         }
     }
 
-    private function _post_parse()
+    public function post_parse()
     {
         foreach ($this->rules as $rule) {
             if (!isset($rule['deinit'])) continue;
@@ -146,7 +145,6 @@ abstract class AbstractTret
             if (!$m) continue;
             call_user_func($m);
         }
-        $this->post_parse();
     }
 
     private function rule_order_sort($a, $b)
@@ -305,7 +303,7 @@ abstract class AbstractTret
     private function _apply($list)
     {
         $this->errors = array();
-        $this->_pre_parse();
+        $this->pre_parse();
 
         $this->log("Применяется набор правил", implode(",", $list));
 
@@ -323,7 +321,7 @@ abstract class AbstractTret
             $this->debug($rule['id'], $this->_text);
         }
 
-        $this->_post_parse();
+        $this->post_parse();
     }
 
     /**
@@ -487,22 +485,6 @@ abstract class AbstractTret
         $this->_apply($rlist);
 
         return $this->_text;
-    }
-
-    /**
-     * Код, выполняем до того, как применить правила
-     *
-     */
-    public function pre_parse()
-    {
-    }
-
-    /**
-     * После выполнения всех правил, выполняется этот метод
-     *
-     */
-    public function post_parse()
-    {
     }
 
 }

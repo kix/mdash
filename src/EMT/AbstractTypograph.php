@@ -233,7 +233,12 @@ class AbstractTypograph
         return $tretname;
     }
 
-    private function _init()
+    /**
+     * Инициализация класса, используется чтобы задать список третов или
+     * спсиок защищённых блоков, которые можно использовать.
+     * Такде здесь можно отменить защищённые блоки по умлочнаию
+     */
+    public function init()
     {
         foreach ($this->trets as $tret) {
             if(isset($this->tret_objects[$tret])) continue;
@@ -249,18 +254,9 @@ class AbstractTypograph
             $this->add_safe_tag('notg');
             $this->add_safe_block('span-notg', '<span class="_notg_start"></span>', '<span class="_notg_end"></span>');
         }
+
         $this->inited = true;
-    }
-
-    /**
-     * Инициализация класса, используется чтобы задать список третов или
-     * спсиок защищённых блоков, которые можно использовать.
-     * Такде здесь можно отменить защищённые блоки по умлочнаию
-     *
-     */
-    public function init()
-    {
-
+        return true;
     }
 
     /**
@@ -347,7 +343,6 @@ class AbstractTypograph
         $this->ok = false;
 
         $this->init();
-        $this->_init();
 
         $atrets = $this->trets;
         if(is_string($trets)) $atrets = array($trets);
