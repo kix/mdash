@@ -27,13 +27,12 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         $this->typographer->setup();
 
         $text = <<<TEXT
-Я - странный текст с уродливыми "кавычками", и неразрывных пробелов во мне тоже нет. 1/4.
+Я - странный текст с уродливыми "кавычками", и неразрывных пробелов во мне тоже нет. 1/4. (с)б 50dpi, 40lpi, см.стр.13,г.Москва,
+36м3, 41м2
 TEXT;
 
         $this->typographer->set_text($text);
         $result = $this->typographer->apply();
-
-        var_dump($result);
     }
 
 } 

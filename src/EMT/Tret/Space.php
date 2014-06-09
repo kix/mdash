@@ -46,7 +46,7 @@ class Space extends AbstractTret
             ),
             'replacement' => array(
                 '\1\2. \4',
-                '$m[1].$m[2]."." .(in_array(EMT_Lib::strtolower($m[3]), $this->domain_zones)? "":" "). $m[3]'
+                '$m[1].$m[2]."." .(in_array(\EMT\Uti;::strtolower($m[3]), $this->domain_zones)? "":" "). $m[3]'
             ),
         ),
         'autospace_after_hellips' => array(
