@@ -12,6 +12,9 @@
         <testsuite name="Integration">
             <directory suffix=".php">tests/EMT/Integration</directory>
         </testsuite>
+        <testsuite name="Rules">
+            <directory suffix=".php">tests/EMT/Rules</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <blacklist>

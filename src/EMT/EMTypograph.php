@@ -249,4 +249,14 @@ class EMTypograph extends AbstractTypograph
 
         return $obj->apply();
     }
+
+    /**
+     * @param string $text
+     * @return string
+     */
+    public function process($text)
+    {
+        $this->set_text($text);
+        return $this->apply();
+    }
 }
