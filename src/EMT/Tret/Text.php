@@ -39,7 +39,7 @@ class Text extends AbstractTret
             ),
             'replacement' => array(
                 '\1',
-                '$m[1].($m[7] === Util::strtolower($m[3]) ? $m[2] : $m[2].$m[5].$m[6] )',
+                '$m[1].($m[7] === \EMT\Util::strtolower($m[3]) ? $m[2] : $m[2].$m[5].$m[6] )',
             )
         ),
         'paragraphs' => array(
