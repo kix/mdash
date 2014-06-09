@@ -6,13 +6,16 @@ php:
   - 5.6
 
 script:
- - vendor/bin/phpunit -v
+ - vendor/bin/phpunit -v --coverage-clover=coverage.clover
+ - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
 before_script:
  - sudo apt-get -qq update > /dev/null
+ - wget https://scrutinizer-ci.com/ocular.phar
  - phpenv rehash > /dev/null
  - composer selfupdate --quiet
  - composer install --dev --prefer-dist
+
 
 notifications:
   email:
