@@ -24,3 +24,5 @@ Stats
 [![Build Status](https://travis-ci.org/kix/mdash.svg?branch=master)](https://travis-ci.org/kix/mdash)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kix/mdash/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kix/mdash/?branch=master)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/kix/mdash/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/kix/mdash/?branch=master)
