@@ -192,7 +192,7 @@ class AbstractTypograph
      * @param boolean $way
      * @return string
      */
-    public function safe_blocks($text, $way, $show = true)
+    public function safe_blocks($text, $way)
     {
         if (count($this->_safe_blocks)) {
             $safeType = true === $way ? "Util::encrypt_tag(\$m[2])" : "stripslashes(\\Emt\\Util::decrypt_tag(\$m[2]))";
@@ -309,16 +309,14 @@ class AbstractTypograph
         } 
         foreach ($this->trets as $tret) {
             if ($tret == $name) {
-                $this->_init();
-
                 return $this->tret_objects[$name];
             }
-            if ($this->get_short_tret($tret) == $name) {
-                $this->_init();
 
+            if ($this->get_short_tret($tret) == $name) {
                 return $this->tret_objects[$tret];
             }
         }
+
         $this->error("Трэт с идентификатором $name не найден");
 
         return false;
@@ -372,7 +370,6 @@ class AbstractTypograph
             if($this->logging) $this->tret_objects[$tret]->logging = true;
 
             // применяем трэт
-            //$this->tret_objects[$tret]->set_text(&$this->_text);
             $this->tret_objects[$tret]->set_text($this->_text);
             $this->tret_objects[$tret]->apply();
 
@@ -431,9 +428,8 @@ class AbstractTypograph
      */
     public function get_style($list = false, $compact = false)
     {
-        $this->_init();
-
         $res = array();
+
         foreach ($this->trets as $tret) {
             $arr =$this->tret_objects[$tret]->classes;
             if(!is_array($arr)) continue;

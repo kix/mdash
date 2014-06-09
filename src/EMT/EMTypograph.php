@@ -136,28 +136,40 @@ class EMTypograph extends AbstractTypograph
      */
     public function get_options_list()
     {
-        $arr['all'] = array();
+        $result = array();
+
+        $result['all'] = array();
         $bygroup = array();
+
         foreach ($this->all_options as $opt => $op) {
-            $arr['all'][$opt] = $this->get_option_info($opt);
+            $result['all'][$opt] = $this->get_option_info($opt);
             $x = explode(".",$opt);
             $bygroup[$x[0]][] = $opt;
         }
-        $arr['group'] = array();
+
+        $result['group'] = array();
+
         foreach ($this->group_list as $group => $ginfo) {
+            $info = array();
             if ($ginfo === true) {
                 $tret = $this->get_tret($group);
-                if($tret) $info['title'] = $tret->title; else $info['title'] = "Не определено";
+                $info['title'] = ($tret) ? $tret->title : "Не определено";
             } else {
                 $info = $ginfo;
             }
+
             $info['name'] = $group;
             $info['options'] = array();
-            if(is_array($bygroup[$group])) foreach($bygroup[$group] as $opt) $info['options'][] = $opt;
-            $arr['group'][] = $info;
+
+            if (is_array($bygroup[$group])) {
+                foreach($bygroup[$group] as $opt) {
+                    $info['options'][] = $opt;
+                } 
+            } 
+            $result['group'][] = $info;
         }
 
-        return $arr;
+        return $result;
     }
 
     /**
