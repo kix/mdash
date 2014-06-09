@@ -74,7 +74,7 @@ class Util
      *
      * @author    somebody?
      * @param  int $c код символа в кодировке UTF-8 (например, 0x00AB)
-     * @return bool|string
+     * @return string|false
      */
     public static function _getUnicodeChar($c)
     {
@@ -111,7 +111,7 @@ class Util
      *
      * @param  string $text
      * @param  mixed $mode
-     * @return string|bool
+     * @return false|string
      */
     public static function clear_special_chars($text, $mode = null)
     {
@@ -183,7 +183,7 @@ class Util
      * возможности выносить за него кавычки.
      *
      * @param  string $text
-     * @param  bool $safe
+     * @param boolean $way
      * @return string
      */
     public static function safe_tag_chars($text, $way)
@@ -296,6 +296,9 @@ class Util
         return base64_decode(substr($text, 0, -1));
     }
 
+    /**
+     * @param string[] $needle
+     */
     public static function strpos_ex(&$haystack, $needle, $offset = null)
     {
         if (is_array($needle)) {
@@ -644,6 +647,9 @@ class Util
             , $text);
     }
 
+    /**
+     * @param string $needle
+     */
     public static function rstrpos($haystack, $needle, $offset = 0)
     {
         if (trim($haystack) != "" && trim($needle) != "" && $offset <= mb_strlen($haystack)) {

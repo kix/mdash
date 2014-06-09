@@ -61,6 +61,9 @@ abstract class AbstractTret
         $this->logs[] = array('info' => $str, 'data' => $data);
     }
 
+    /**
+     * @param string $info
+     */
     private function error($info, $data = null)
     {
         $this->errors[] = array('info' => $info, 'data' => $data);
@@ -81,7 +84,6 @@ abstract class AbstractTret
      *   Util::LAYOUT_STYLE - с помощью стилей
      *   Util::LAYOUT_CLASS - с помощью классов
      *
-     * @param int $kind
      */
     public function set_tag_layout_ifnotset($layout)
     {
@@ -95,7 +97,6 @@ abstract class AbstractTret
      *   Util::LAYOUT_CLASS - с помощью классов
      *   Util::LAYOUT_STYLE|Util::LAYOUT_CLASS - оба метода
      *
-     * @param int $kind
      */
     public function set_tag_layout($layout = Util::LAYOUT_STYLE)
     {
@@ -275,6 +276,10 @@ abstract class AbstractTret
         }
     }
 
+    /**
+     * @param string $pattern
+     * @param string $replacement
+     */
     protected function preg_replace_e($pattern, $replacement, $text)
     {
         $chr = substr($pattern, 0, 1);
@@ -417,7 +422,7 @@ abstract class AbstractTret
      * Получить строковое значение настройки
      *
      * @param  unknown_type $key
-     * @return unknown
+     * @return string
      */
     public function ss($key)
     {
@@ -471,7 +476,6 @@ abstract class AbstractTret
     /**
      * Применить к тексту
      *
-     * @param  string $text - текст к которому применить
      * @param  mixed $list - список правил, null - все правила
      * @return string
      */

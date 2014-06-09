@@ -49,6 +49,9 @@ class AbstractTypograph
         $this->logs[] = array('class' => $tret, 'info' => $str, 'data' => $data);
     }
 
+    /**
+     * @param string $data
+     */
     protected function error($info, $data = null)
     {
         $this->errors[] = array('class' => '', 'info' => $info, 'data' => $data);
@@ -143,7 +146,7 @@ class AbstractTypograph
      * Добавление защищенного блока
      *
      * @param  string $tag тэг, который должен быть защищён
-     * @return void
+     * @return boolean
      */
     public function add_safe_tag($tag)
     {
@@ -160,7 +163,8 @@ class AbstractTypograph
      * @param  string $open   начало блока
      * @param  string $close  конец защищенного блока
      * @param  bool   $quoted специальные символы в начале и конце блока экранированы
-     * @return void
+     * @param string $id
+     * @return boolean
      */
     public function add_safe_block($id, $open, $close, $quoted = false)
     {
@@ -185,7 +189,7 @@ class AbstractTypograph
      * Сохранение содержимого защищенных блоков
      *
      * @param  string $text
-     * @param  bool   $safe если true, то содержимое блоков будет сохранено, иначе - раскодировано.
+     * @param boolean $way
      * @return string
      */
     public function safe_blocks($text, $way, $show = true)
@@ -264,7 +268,7 @@ class AbstractTypograph
      *
      * @param  mixed   $class   - имя класса трета, или сам объект
      * @param  string  $altname - альтернативное имя, если хотим например иметь два одинаоковых терта в обработке
-     * @return unknown
+     * @return boolean
      */
     public function add_tret($class, $altname = false)
     {
@@ -534,7 +538,6 @@ class AbstractTypograph
      * Установить настройку
      *
      * @param mixed  $selector
-     * @param string $setting
      * @param mixed  $value
      */
     protected function doset($selector, $key, $value)
