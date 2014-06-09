@@ -57,6 +57,9 @@ class Quote extends AbstractTret
         ),
     );
 
+    /**
+     * @param string $text
+     */
     protected function inject_in($pos, $text)
     {
         for ($i = 0; $i < strlen($text); $i++) $this->_text[$pos + $i] = $text[$i];
