@@ -188,12 +188,24 @@ class Util
      */
     public static function safe_tag_chars($text, $way)
     {
-        if ($way)
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 1) === "a" ? "%%___"  : ""  ) . \EMT\Util::encrypt_tag(trim($m[2]))  . $m[3];'), $text);
-        else
-            $text = preg_replace_callback('/(\<\/?)(.+?)(\>)/s', create_function('$m', 'return $m[1].( substr(trim($m[2]), 0, 3) === "%%___" ? \EMT\Util::decrypt_tag(substr(trim($m[2]), 4)) : \EMT\Util::decrypt_tag(trim($m[2])) ) . $m[3];'), $text);
+        if ($way) {
+            $callback = function ($m) {
+                return $m[1]
+                    . (substr(trim($m[2]), 0, 1) === 'a' ? '%%___' : '')
+                    . self::encrypt_tag(trim($m[2]))
+                    . $m[3];
+            };
+        } else {
+            $callback = function ($m) {
+                return $m[1]
+                    . (substr(trim($m[2]), 0, 3) === '%%___'
+                        ? self::decrypt_tag(substr(trim($m[2]), 4))
+                        : self::decrypt_tag(trim($m[2])))
+                    . $m[3];
+            };
+        }
 
-        return $text;
+        return preg_replace_callback('/(\<\/?)(.+?)(\>)/s', $callback, $text);
     }
 
     /**
@@ -204,9 +216,13 @@ class Util
      */
     public static function decode_internal_blocks($text)
     {
-        $text = preg_replace_callback('/' . \EMT\Util::INTERNAL_BLOCK_OPEN . '([a-zA-Z0-9\/=]+?)' . \EMT\Util::INTERNAL_BLOCK_CLOSE . '/s', create_function('$m', 'return \EMT\Util::decrypt_tag($m[1]);'), $text);
-
-        return $text;
+        return preg_replace_callback(
+            '/' . self::INTERNAL_BLOCK_OPEN . '([a-zA-Z0-9\/=]+?)' . \EMT\Util::INTERNAL_BLOCK_CLOSE . '/s',
+            function ($m) {
+                return self::decrypt_tag($m[1]);
+            },
+            $text
+        );
     }
 
     /**
@@ -636,15 +652,19 @@ class Util
      */
     public static function convert_html_entities_to_unicode(&$text)
     {
-        $text = preg_replace_callback("/\&#([0-9]+)\;/",
-            create_function('$m', 'return \EMT\Util::_getUnicodeChar(intval($m[1]));')
-            , $text);
-        $text = preg_replace_callback("/\&#x([0-9A-F]+)\;/",
-            create_function('$m', 'return \EMT\Util::_getUnicodeChar(hexdec($m[1]));')
-            , $text);
-        $text = preg_replace_callback("/\&([a-zA-Z0-9]+)\;/",
-            create_function('$m', '$r = \EMT\Util::html_char_entity_to_unicode($m[1]); return $r ? $r : $m[0];')
-            , $text);
+        $text = preg_replace_callback('/\&#([0-9]+)\;/', function ($m) {
+            return self::_getUnicodeChar(intval($m[1]));
+        }, $text);
+
+        $text = preg_replace_callback('/\&#x([0-9A-F]+)\;/', function ($m) {
+            return self::_getUnicodeChar(hexdec($m[1]));
+        }, $text);
+
+        $text = preg_replace_callback('/\&([a-zA-Z0-9]+)\;/', function ($m) {
+            $r = self::html_char_entity_to_unicode($m[1]);
+
+            return $r ? $r : $m[0];
+        }, $text);
     }
 
     /**
